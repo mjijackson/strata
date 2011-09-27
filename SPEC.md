@@ -8,8 +8,14 @@ A Strata application is a function that takes exactly two arguments: the
 
 ## The Environment
 
-The environment is an object that contains CGI-like properties. It must include
-the following:
+The environment is a JavaScript object that contains CGI-like properties.
+The application is free to modify its environment but it should prefix its
+property names to avoid collisions with other middleware.
+
+#### Mandatory Properties
+
+These properties must always be present in the environment and, except where
+indicated, must be a non-emtpy String.
 
   - **protocol**      The protocol used in the request (i.e. "http:" or
                       "https:"). This variable may never be an empty string and
@@ -48,18 +54,18 @@ the following:
                       original header name (e.g. "httpAccept" and
                       "httpUserAgent").
 
-The environment must not contain the properties httpContentType or
-httpContentLength (use contentType and contentLength instead).
+#### Mandatory Strata Properties
 
-In addition to these, the environment may include the following Strata-specific
-properties:
+The prefix "strata" is reserved for use within the Strata core distribution.
 
   - **input**           A readable Stream of data contained in the request body
   - **error**           A writable Stream for error output
   - **session**         An object containing session data
   - **strataVersion**   The current version of Strata as [major, minor, patch]
 
-There are the following restrictions:
+#### Invariants
+
+The environment must always adhere to the following restrictions.
 
   - **protocol**         must be either "http:" or "https:"
   - **requestMethod**    must be a valid HTTP verb as an uppercase String
@@ -67,15 +73,10 @@ There are the following restrictions:
   - **scriptName**       and pathInfo, if not empty, should start with a "/"
   - **scriptName**       should never be "/" but instead be empty
   - **pathInfo**         should be "/" if scriptName is empty
-  - **contentLength**,   if given, must be a JavaScript string that consists of only digits.
+  - **contentLength**    if given, must be a JavaScript string that consists of only digits.
   - **input**            must be a readable Stream
   - **error**            must be a writable Stream
   - **strataVersion**    must be an array of integers
-
-The application is free to modify the environment. Property names must be
-prefixed uniquely. The prefix "strata" is reserved for use within the Strata
-core distribution and other accepted specifications and is not available for
-use elsewhere.
 
 ## The Callback
 
