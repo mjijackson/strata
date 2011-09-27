@@ -14,19 +14,19 @@ the following:
   - **protocol**      The protocol used in the request (i.e. "http:" or
                       "https:"). This variable may never be an empty string and
                       is always required.
-  - **protocolVersion** The version of the protocol used in the request. This
-                      variable may never be an empty string and is always
+  - **protocolVersion** The version of the protocol used in the request (i.e. '1.1').
+                      This variable may never be an empty string and is always
                       required.
   - **requestMethod** The request method (e.g. "GET" or "POST"). This cannot
                       ever be an empty string, and is always required.
   - **requestTime**   A Date that indicates the time the request was received.
-  - **serverName**
-  - **serverPort**    When combined with scriptName and pathInfo these
-                      variables may be used to reconstruct the original
-                      request URL. Note, however, that if httpHost is present,
-                      it should be used in preference to serverName. These
-                      variables can never be empty strings, and are always
-                      required.
+  - **serverName**    The address returned by the Net module's
+                      [server.address()](http://nodejs.org/docs/latest/api/net.html#server.address)
+                      call.  If httpHost is present, it should be used in
+                      preference to serverName.
+  - **serverPort**    A String that specifies the TCP port that received this
+                      request.  serverName, serverPort, scriptName and pathInfo
+                      may be used to reconstruct the original request URL.
   - **scriptName**    The initial portion of the request URL's "path" that
                       corresponds to the application, so that it knows its
                       virtual "location". This may be an empty string, if the
