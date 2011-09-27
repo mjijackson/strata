@@ -63,6 +63,22 @@ The prefix "strata" is reserved for use within the Strata core distribution.
   - **session**         An object containing session data
   - **strataVersion**   The current version of Strata as [major, minor, patch]
 
+#### Optional Properties
+
+These properties are likely to be found in a Strata environment (depending
+on your web client).
+Note that httpContentType and httpContentLength must never be included in
+the environment.  Use contentType and contentLength instead.
+
+  - **contentType**     The Content-Type header, specifies the type
+                        of the request body or '' if the body is empty.
+  - **contentLength**   The Content-Length header, a String containing
+                        an integer value, '0' if the request body is empty.
+  - **httpHost**        The Host header, i.e. 'localhost:1982'
+  - **httpAccept**      The content types that the browser will accept,
+                        i.e. 'text/html,application/xhtml+xml,application/xml'
+  - **httpUserAgent**   The User-Agent header.
+
 #### Invariants
 
 The environment must always adhere to the following restrictions.
