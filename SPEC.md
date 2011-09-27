@@ -13,25 +13,20 @@ property names to avoid collisions with other middleware.
 
 #### Mandatory Properties
 
-These properties must always be present in the environment and, except where
+Each of these properties must be present in the environment and, except where
 indicated, must be a non-emtpy String.
 
-  - **protocol**      The protocol used in the request (i.e. "http:" or
-                      "https:"). This variable may never be an empty string and
-                      is always required.
+  - **protocol**      The protocol used in the request (either "http:" or "https:").
   - **protocolVersion** The version of the protocol used in the request (i.e. '1.1').
-                      This variable may never be an empty string and is always
-                      required.
-  - **requestMethod** The request method (e.g. "GET" or "POST"). This cannot
-                      ever be an empty string, and is always required.
-  - **requestTime**   A Date that indicates the time the request was received.
+  - **requestMethod** The request method (e.g. "GET" or "POST").
+  - **requestTime**   A JavaScript Date that indicates the time the request was received.
   - **serverName**    The address returned by the Net module's
                       [server.address()](http://nodejs.org/docs/latest/api/net.html#server.address)
-                      call.  If httpHost is present, it should be used in
-                      preference to serverName.
+                      call (i.e. '0.0.0.0').  If httpHost is present, it should
+                      be used in preference to serverName.
   - **serverPort**    A String that specifies the TCP port that received this
-                      request.  serverName, serverPort, scriptName and pathInfo
-                      may be used to reconstruct the original request URL.
+                      request (i.e. '1982').  serverName, serverPort, scriptName and
+                      pathInfo may be used to reconstruct the original request URL.
   - **scriptName**    The initial portion of the request URL's "path" that
                       corresponds to the application, so that it knows its
                       virtual "location". This may be an empty string, if the
@@ -43,7 +38,7 @@ indicated, must be a non-emtpy String.
                       have a trailing slash. This value may be percent-encoded
                       when originating from a URL.
   - **queryString**   The portion of the request URL that follows the "?", if
-                      any. May be an empty string, but is always required.
+                      any. May be an empty string if no query string is present.
   - **http\***        Variables corresponding to the client-supplied HTTP
                       request headers (i.e. variables whose names begin with
                       "http"). The presence or absence of these variables should
