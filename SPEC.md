@@ -1,7 +1,5 @@
-This specification aims to formalize the Strata protocol for building web
-applications using the node.js JavaScript platform. You can (and should) use
-the strata.lint middleware to enforce it. When you develop middleware, be sure
-to add a strata.lint before and after to catch all mistakes.
+This specification aims to formalize the Strata protocol for building web applications.
+Use the strata.lint middleware to catch common mistakes.
 
 # Applications
 
@@ -108,6 +106,6 @@ response will be pumped through to the client.
 
 # Credits
 
-Some parts of this specification are adopted from PEP333: Python Web Server
-Gateway Interface v1.0 (http://www.python.org/dev/peps/pep-0333/) and the Rack
-specification (http://rack.rubyforge.org/doc/files/SPEC.html).
+Some parts of this specification are adopted from
+[PEP333: Python Web Server Gateway Interface v1.0](http://www.python.org/dev/peps/pep-0333/) and the
+[Rack specification](http://rack.rubyforge.org/doc/files/SPEC.html).
