@@ -1,5 +1,4 @@
 This specification aims to formalize the Strata protocol for building web applications.
-Use the strata.lint middleware to catch common mistakes.
 
 # Applications
 
@@ -82,6 +81,7 @@ the environment.  Use contentType and contentLength instead.
 #### Invariants
 
 The environment must always adhere to the following restrictions.
+Use the strata.lint middleware to catch common mistakes.
 
   - **protocol**         must be either "http:" or "https:"
   - **requestMethod**    must be a valid HTTP verb as an uppercase String
