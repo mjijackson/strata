@@ -51,7 +51,7 @@ function checkHtml(app, root) {
         var pathInfo = env.pathInfo;
 
         // Check to see if an .html version of the requested file exists.
-        path.exists(path.join(root, pathInfo) + ".html", function (exists) {
+        fs.exists(path.join(root, pathInfo) + ".html", function (exists) {
             if (exists) {
                 // Rewrite env.pathInfo for downstream apps.
                 env.pathInfo = pathInfo + ".html";
